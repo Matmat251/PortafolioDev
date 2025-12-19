@@ -152,11 +152,6 @@
 <span class="code-keyword">export default</span> developer;</code></pre>
                                 </div>
                             </div>
-                            <!-- Elementos flotantes decorativos -->
-                            <div class="floating-element fe-1"><i class="fa-brands fa-react"></i></div>
-                            <div class="floating-element fe-2"><i class="fa-brands fa-node-js"></i></div>
-                            <div class="floating-element fe-3"><i class="fa-brands fa-js"></i></div>
-                            <div class="floating-element fe-4"><i class="fa-solid fa-database"></i></div>
                         </div>
                     </div>
                 </div>
@@ -289,7 +284,7 @@
                     </div>
                     <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                         <div class="project-preview">
-                            <div class="browser-mockup">
+                            <div class="browser-mockup gallery-trigger" data-gallery="hssc">
                                 <div class="browser-header">
                                     <span class="dot red"></span>
                                     <span class="dot yellow"></span>
@@ -298,6 +293,11 @@
                                 </div>
                                 <div class="browser-content">
                                     <img src="img/hs-courrier.png" alt="HSSC GROUP" class="project-screenshot">
+                                </div>
+                                <!-- Indicador de galería -->
+                                <div class="gallery-indicator">
+                                    <i class="fa-solid fa-images"></i>
+                                    <span>Ver 4 imágenes</span>
                                 </div>
                             </div>
                         </div>
@@ -311,7 +311,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7 order-lg-1 order-2" data-aos="fade-right" data-aos-duration="1000">
                         <div class="project-preview">
-                            <div class="browser-mockup">
+                            <div class="browser-mockup gallery-trigger" data-gallery="fastwheels">
                                 <div class="browser-header">
                                     <span class="dot red"></span>
                                     <span class="dot yellow"></span>
@@ -320,6 +320,11 @@
                                 </div>
                                 <div class="browser-content">
                                     <img src="img/fast-wheels.png" alt="Fast Wheels" class="project-screenshot">
+                                </div>
+                                <!-- Indicador de galería -->
+                                <div class="gallery-indicator">
+                                    <i class="fa-solid fa-images"></i>
+                                    <span>Ver 14 imágenes</span>
                                 </div>
                             </div>
                         </div>
@@ -375,7 +380,7 @@
                     </div>
                     <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                         <div class="project-preview">
-                            <div class="browser-mockup">
+                            <div class="browser-mockup gallery-trigger" data-gallery="ultratech">
                                 <div class="browser-header">
                                     <span class="dot red"></span>
                                     <span class="dot yellow"></span>
@@ -384,6 +389,11 @@
                                 </div>
                                 <div class="browser-content">
                                     <img src="img/ultratech.png" alt="UltraTech" class="project-screenshot">
+                                </div>
+                                <!-- Indicador de galería -->
+                                <div class="gallery-indicator">
+                                    <i class="fa-solid fa-images"></i>
+                                    <span>Ver 11 imágenes</span>
                                 </div>
                             </div>
                         </div>
@@ -501,6 +511,41 @@
             </div>
         </div>
     </section>
+
+    <!-- ============================================================================
+         LIGHTBOX GALLERY MODAL
+    ============================================================================ -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-container">
+            <!-- Botón cerrar -->
+            <button class="lightbox-close" aria-label="Cerrar galería">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Navegación -->
+            <button class="lightbox-nav lightbox-prev" aria-label="Imagen anterior">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-nav lightbox-next" aria-label="Imagen siguiente">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Contenido de la imagen -->
+            <div class="lightbox-content">
+                <img src="" alt="Galería HSSC GROUP" class="lightbox-image">
+                <div class="lightbox-caption">
+                    <span class="lightbox-title"></span>
+                    <span class="lightbox-counter"></span>
+                </div>
+            </div>
+
+            <!-- Thumbnails -->
+            <div class="lightbox-thumbnails" id="lightboxThumbnails">
+                <!-- Se generan dinámicamente -->
+            </div>
+        </div>
+    </div>
 
     <!-- ============================================================================
          FOOTER

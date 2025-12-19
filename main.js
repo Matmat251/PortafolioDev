@@ -344,4 +344,215 @@ window.addEventListener('resize', debounce(function () {
 // Log cuando la página está completamente cargada (incluyendo imágenes)
 window.addEventListener('load', function () {
     console.log('📄 Todos los recursos cargados');
+
+    // Inicializar el lightbox después de que carguen las imágenes
+    initLightbox();
 });
+
+// ============================================================================
+// MÓDULO: LIGHTBOX GALLERY
+// Galería modal para mostrar múltiples imágenes de proyectos
+// ============================================================================
+
+/**
+ * Configuración de galerías de proyectos
+ * Cada galería tiene un ID y un array de imágenes con título
+ */
+const galleryData = {
+    hssc: {
+        name: 'HSSC GROUP',
+        images: [
+            { src: 'img/hs-courrier-1.png', title: 'Página Principal - Conócenos' },
+            { src: 'img/hs-courrier-2.png', title: 'Sección de Servicios' },
+            { src: 'img/hs-courrier-3.png', title: 'Tiendas Recomendadas' },
+            { src: 'img/hs-courrier-4.png', title: 'Formulario de Contacto' }
+        ]
+    },
+    fastwheels: {
+        name: 'Fast Wheels',
+        images: [
+            { src: 'img/fast-wheels-1.png', title: 'Catálogo de Vehículos' },
+            { src: 'img/fast-wheels-2.png', title: 'Login de Usuario' },
+            { src: 'img/fast-wheels-3.png', title: 'Registro de Cliente' },
+            { src: 'img/fast-wheels-4.png', title: 'Portal Corporativo' },
+            { src: 'img/fast-wheels-5.png', title: 'Mis Reservas' },
+            { src: 'img/fast-wheels-6.png', title: 'Perfil de Usuario' },
+            { src: 'img/fast-wheels-7.png', title: 'Formulario de Reserva' },
+            { src: 'img/fast-wheels-8.png', title: 'Pago con Tarjeta' },
+            { src: 'img/fast-wheels-9.png', title: 'Panel de Control Admin' },
+            { src: 'img/fast-wheels-10.png', title: 'Gestión de Vehículos' },
+            { src: 'img/fast-wheels-11.png', title: 'Registrar Vehículo' },
+            { src: 'img/fast-wheels-12.png', title: 'Gestión de Reservas' },
+            { src: 'img/fast-wheels-13.png', title: 'Directorio de Clientes' },
+            { src: 'img/fast-wheels-14.png', title: 'Reportes y Análisis' }
+        ]
+    },
+    ultratech: {
+        name: 'UltraTech',
+        images: [
+            { src: 'img/ultratech-1.png', title: 'Login - Servicio Técnico' },
+            { src: 'img/ultratech-2.png', title: 'Dashboard Cliente' },
+            { src: 'img/ultratech-3.png', title: 'Boleta Electrónica' },
+            { src: 'img/ultratech-4.png', title: 'Lista de Tickets' },
+            { src: 'img/ultratech-5.png', title: 'Crear Ticket' },
+            { src: 'img/ultratech-6.png', title: 'Crear Usuario' },
+            { src: 'img/ultratech-7.png', title: 'Lista de Tickets Admin' },
+            { src: 'img/ultratech-8.png', title: 'Menú Principal' },
+            { src: 'img/ultratech-9.png', title: 'Login Admin' },
+            { src: 'img/ultratech-10.png', title: 'Modificar Ticket' },
+            { src: 'img/ultratech-11.png', title: 'Modificar Usuario' }
+        ]
+    }
+};
+
+/**
+ * Inicializa el sistema de lightbox
+ * Gestiona apertura, cierre, navegación y thumbnails
+ */
+function initLightbox() {
+    // Elementos del DOM
+    const modal = document.getElementById('lightboxModal');
+    const overlay = modal?.querySelector('.lightbox-overlay');
+    const closeBtn = modal?.querySelector('.lightbox-close');
+    const prevBtn = modal?.querySelector('.lightbox-prev');
+    const nextBtn = modal?.querySelector('.lightbox-next');
+    const mainImage = modal?.querySelector('.lightbox-image');
+    const titleEl = modal?.querySelector('.lightbox-title');
+    const counterEl = modal?.querySelector('.lightbox-counter');
+    const thumbnailsContainer = document.getElementById('lightboxThumbnails');
+
+    // Estado actual
+    let currentGallery = null;
+    let currentIndex = 0;
+
+    // Si no existe el modal, salir
+    if (!modal) {
+        console.warn('⚠️ Lightbox modal no encontrado');
+        return;
+    }
+
+    /**
+     * Abre el lightbox con la galería especificada
+     */
+    function openLightbox(galleryId) {
+        currentGallery = galleryData[galleryId];
+        if (!currentGallery) return;
+
+        currentIndex = 0;
+
+        // Generar thumbnails
+        generateThumbnails();
+
+        // Mostrar primera imagen
+        updateImage();
+
+        // Mostrar modal
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        console.log('📸 Lightbox abierto:', currentGallery.name);
+    }
+
+    /**
+     * Cierra el lightbox
+     */
+    function closeLightbox() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        currentGallery = null;
+    }
+
+    /**
+     * Actualiza la imagen mostrada según el índice actual
+     */
+    function updateImage() {
+        if (!currentGallery) return;
+
+        const image = currentGallery.images[currentIndex];
+        mainImage.src = image.src;
+        mainImage.alt = image.title;
+        titleEl.textContent = image.title;
+        counterEl.textContent = `${currentIndex + 1} / ${currentGallery.images.length}`;
+
+        // Actualizar thumbnails activos
+        const thumbs = thumbnailsContainer.querySelectorAll('.lightbox-thumb');
+        thumbs.forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    /**
+     * Genera los thumbnails dinámicamente
+     */
+    function generateThumbnails() {
+        if (!currentGallery) return;
+
+        thumbnailsContainer.innerHTML = '';
+
+        currentGallery.images.forEach((image, index) => {
+            const thumb = document.createElement('div');
+            thumb.className = `lightbox-thumb ${index === 0 ? 'active' : ''}`;
+            thumb.innerHTML = `<img src="${image.src}" alt="${image.title}">`;
+            thumb.addEventListener('click', () => {
+                currentIndex = index;
+                updateImage();
+            });
+            thumbnailsContainer.appendChild(thumb);
+        });
+    }
+
+    /**
+     * Navega a la imagen anterior
+     */
+    function prevImage() {
+        if (!currentGallery) return;
+        currentIndex = (currentIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+        updateImage();
+    }
+
+    /**
+     * Navega a la siguiente imagen
+     */
+    function nextImage() {
+        if (!currentGallery) return;
+        currentIndex = (currentIndex + 1) % currentGallery.images.length;
+        updateImage();
+    }
+
+    // Event Listeners
+
+    // Abrir lightbox al hacer clic en triggers
+    document.querySelectorAll('.gallery-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function () {
+            const galleryId = this.dataset.gallery;
+            openLightbox(galleryId);
+        });
+    });
+
+    // Cerrar lightbox
+    closeBtn?.addEventListener('click', closeLightbox);
+    overlay?.addEventListener('click', closeLightbox);
+
+    // Navegación
+    prevBtn?.addEventListener('click', prevImage);
+    nextBtn?.addEventListener('click', nextImage);
+
+    // Navegación con teclado
+    document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('active')) return;
+
+        switch (e.key) {
+            case 'Escape':
+                closeLightbox();
+                break;
+            case 'ArrowLeft':
+                prevImage();
+                break;
+            case 'ArrowRight':
+                nextImage();
+                break;
+        }
+    });
+
+    console.log('✅ Lightbox gallery inicializado correctamente');
+}
