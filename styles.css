@@ -2631,3 +2631,453 @@ body {
         font-size: 0.7rem;
     }
 }
+
+/* ============================================================================
+   PARTICLES CONTAINER - Partículas flotantes
+   ============================================================================ */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: var(--size, 6px);
+    height: var(--size, 6px);
+    background: var(--color, var(--color-primary));
+    border-radius: 50%;
+    opacity: var(--opacity, 0.3);
+    animation: floatParticle var(--duration, 20s) linear infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: var(--opacity, 0.3);
+    }
+
+    90% {
+        opacity: var(--opacity, 0.3);
+    }
+
+    100% {
+        transform: translateY(-100px) translateX(var(--drift, 100px)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Partículas solo en secciones específicas */
+.hero-section .particles-container,
+.about-section .particles-container {
+    position: absolute;
+}
+
+/* ============================================================================
+   MAGNETIC BUTTONS - Efecto magnético en botones
+   ============================================================================ */
+.btn-magnetic {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-magnetic .btn-magnetic-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ============================================================================
+   PREMIUM HOVER EFFECTS - Efectos hover mejorados
+   ============================================================================ */
+
+/* Efecto de brillo en tarjetas */
+.skill-mini-card::before,
+.browser-mockup::before,
+.project-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent);
+    transition: left 0.5s ease;
+    pointer-events: none;
+}
+
+.skill-mini-card:hover::before,
+.browser-mockup:hover::before {
+    left: 100%;
+}
+
+/* Efecto de elevación mejorado */
+.skill-mini-card,
+.browser-mockup,
+.contact-form-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto glow en hover */
+.btn-neon::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--gradient-primary);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    filter: blur(15px);
+    transition: opacity 0.3s ease;
+}
+
+.btn-neon:hover::after {
+    opacity: 0.5;
+}
+
+/* Efecto de escala suave en project cards */
+.project-showcase {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.project-showcase:hover {
+    transform: translateY(-5px);
+}
+
+/* Animación de pulso sutil en badge de disponibilidad */
+.hero-badge {
+    animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 5px rgba(5, 150, 105, 0.15);
+    }
+}
+
+/* ============================================================================
+   ANIMATED COUNTERS - Estilos para contadores
+   ============================================================================ */
+.stat-number {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-number.counting {
+    transition: transform 0.1s ease;
+}
+
+/* ============================================================================
+   TYPEWRITER EFFECT - Efecto de escritura
+   ============================================================================ */
+.typewriter-line {
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.typewriter-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--color-accent);
+    margin-left: 2px;
+    animation: cursorBlink 0.8s step-end infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ============================================================================
+   PARALLAX ELEMENTS - Elementos con parallax
+   ============================================================================ */
+.parallax-element {
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+}
+
+/* ============================================================================
+   SCROLL PROGRESS INDICATOR
+   ============================================================================ */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--gradient-primary);
+    z-index: 100000;
+    transition: width 0.1s ease-out;
+}
+
+/* ============================================================================
+   SKILL BARS - Barras de progreso animadas
+   ============================================================================ */
+.skill-bar {
+    height: 8px;
+    background: var(--bg-gray);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+    width: 0%;
+    transition: width 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.skill-bar-fill.animated {
+    width: var(--progress, 0%);
+}
+
+/* ============================================================================
+   INTERACTIVE TERMINAL - Terminal interactiva
+   ============================================================================ */
+.terminal-interactive .code-content {
+    position: relative;
+}
+
+.terminal-interactive .terminal-line {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.terminal-interactive .terminal-line.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ============================================================================
+   RIPPLE EFFECT - Efecto de onda en botones
+   ============================================================================ */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    animation: rippleEffect 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes rippleEffect {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ============================================================================
+   LOADING SKELETON - Efecto de carga
+   ============================================================================ */
+.skeleton {
+    background: linear-gradient(90deg,
+            var(--bg-gray) 25%,
+            var(--bg-light) 50%,
+            var(--bg-gray) 75%);
+    background-size: 200% 100%;
+    animation: skeletonLoading 1.5s infinite;
+}
+
+@keyframes skeletonLoading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ============================================================================
+   IMAGE REVEAL ANIMATION
+   ============================================================================ */
+.reveal-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.reveal-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-primary);
+    transform: translateX(-101%);
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.reveal-image.revealed::after {
+    transform: translateX(101%);
+}
+
+/* ============================================================================
+   GLASSMORPHISM ENHANCEMENT
+   ============================================================================ */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================================================
+   TEXT GRADIENT ANIMATION
+   ============================================================================ */
+.gradient-text-animated {
+    background: linear-gradient(90deg,
+            var(--color-primary),
+            var(--color-secondary),
+            var(--color-accent),
+            var(--color-primary));
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 8s linear infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+/* ============================================================================
+   FLOATING ANIMATION VARIANTS
+   ============================================================================ */
+.float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+}
+
+.float-medium {
+    animation: floatMedium 4s ease-in-out infinite;
+}
+
+.float-fast {
+    animation: floatFast 2s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes floatMedium {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes floatFast {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ============================================================================
+   TILT EFFECT STYLES
+   ============================================================================ */
+.tilt-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.tilt-card-inner {
+    transition: transform 0.3s ease;
+}
+
+/* ============================================================================
+   STAGGER ANIMATION 
+   ============================================================================ */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.stagger-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.stagger-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.stagger-item:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.stagger-item:nth-child(5) {
+    transition-delay: 0.5s;
+}

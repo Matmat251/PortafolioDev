@@ -556,3 +556,419 @@ function initLightbox() {
 
     console.log('✅ Lightbox gallery inicializado correctamente');
 }
+
+// ============================================================================
+// MÓDULO: PARTICLES SYSTEM
+// Sistema de partículas flotantes sin dependencias externas
+// ============================================================================
+
+/**
+ * Crea y anima partículas flotantes en el fondo
+ */
+function initParticles() {
+    const container = document.getElementById('particles-container');
+    if (!container) return;
+
+    const particleCount = 25;
+    const colors = [
+        'rgba(37, 99, 235, 0.4)',   // Primary blue
+        'rgba(8, 145, 178, 0.3)',    // Secondary teal
+        'rgba(249, 115, 22, 0.25)',  // Accent orange
+        'rgba(139, 92, 246, 0.3)'    // Purple
+    ];
+
+    for (let i = 0; i < particleCount; i++) {
+        createParticle(container, colors);
+    }
+
+    console.log('✅ Sistema de partículas inicializado');
+}
+
+/**
+ * Crea una partícula individual con propiedades aleatorias
+ */
+function createParticle(container, colors) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+
+    // Propiedades aleatorias
+    const size = Math.random() * 8 + 3;
+    const duration = Math.random() * 25 + 15;
+    const delay = Math.random() * 20;
+    const left = Math.random() * 100;
+    const drift = (Math.random() - 0.5) * 200;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const opacity = Math.random() * 0.4 + 0.1;
+
+    // Aplicar estilos
+    particle.style.cssText = `
+        --size: ${size}px;
+        --duration: ${duration}s;
+        --delay: ${delay}s;
+        --drift: ${drift}px;
+        --color: ${color};
+        --opacity: ${opacity};
+        left: ${left}%;
+    `;
+
+    container.appendChild(particle);
+}
+
+// ============================================================================
+// MÓDULO: MAGNETIC BUTTONS
+// Efecto magnético en botones principales
+// ============================================================================
+
+/**
+ * Inicializa el efecto magnético en botones
+ */
+function initMagneticButtons() {
+    const magneticElements = document.querySelectorAll('.btn-neon, .btn-outline-neon');
+
+    magneticElements.forEach(function (btn) {
+        btn.addEventListener('mousemove', function (e) {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            // Movimiento sutil hacia el cursor
+            const moveX = x * 0.2;
+            const moveY = y * 0.2;
+
+            btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+
+        btn.addEventListener('mouseleave', function () {
+            btn.style.transform = 'translate(0, 0)';
+        });
+    });
+
+    console.log('✅ Efecto magnético inicializado');
+}
+
+// ============================================================================
+// MÓDULO: ANIMATED COUNTERS
+// Contadores animados que incrementan al entrar en viewport
+// ============================================================================
+
+/**
+ * Inicializa contadores animados para las estadísticas del hero
+ */
+function initAnimatedCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+
+    if (statNumbers.length === 0) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const text = el.textContent;
+
+                // Extraer número y sufijo
+                const match = text.match(/(\d+)(\+|%)?/);
+                if (match) {
+                    const targetNum = parseInt(match[1]);
+                    const suffix = match[2] || '';
+
+                    animateCounter(el, 0, targetNum, suffix, 1500);
+                }
+
+                observer.unobserve(el);
+            }
+        });
+    }, observerOptions);
+
+    statNumbers.forEach(function (el) {
+        observer.observe(el);
+    });
+
+    console.log('✅ Contadores animados inicializados');
+}
+
+/**
+ * Anima un contador desde inicio hasta fin
+ */
+function animateCounter(element, start, end, suffix, duration) {
+    element.classList.add('counting');
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Ease out cubic
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (end - start) * easeOut);
+
+        element.textContent = current + suffix;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.classList.remove('counting');
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+// ============================================================================
+// MÓDULO: TYPEWRITER EFFECT
+// Efecto de escritura para el código del hero
+// ============================================================================
+
+/**
+ * Inicializa efecto typewriter mejorado
+ */
+function initTypewriter() {
+    const codeWindow = document.querySelector('.hero-code-window');
+    if (!codeWindow) return;
+
+    const codeContent = codeWindow.querySelector('.code-content pre code');
+    if (!codeContent) return;
+
+    // Guardar contenido original
+    const originalHTML = codeContent.innerHTML;
+
+    // Dividir en líneas
+    const lines = originalHTML.split('\n');
+
+    // Reconstruir con wrappers
+    codeContent.innerHTML = lines.map((line, index) =>
+        `<span class="typewriter-line" style="transition-delay: ${index * 100}ms">${line}</span>`
+    ).join('\n');
+
+    // Observer para activar animación
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                const lineElements = codeContent.querySelectorAll('.typewriter-line');
+                lineElements.forEach(function (line, index) {
+                    setTimeout(function () {
+                        line.classList.add('visible');
+                    }, index * 100);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    observer.observe(codeWindow);
+
+    console.log('✅ Typewriter effect inicializado');
+}
+
+// ============================================================================
+// MÓDULO: SCROLL PROGRESS
+// Barra de progreso de scroll en la parte superior
+// ============================================================================
+
+/**
+ * Inicializa el indicador de progreso de scroll
+ */
+function initScrollProgress() {
+    // Crear elemento de progreso
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    document.body.appendChild(progressBar);
+
+    function updateProgress() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+
+        progressBar.style.width = progress + '%';
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    console.log('✅ Scroll progress inicializado');
+}
+
+// ============================================================================
+// MÓDULO: PARALLAX EFFECT
+// Efecto parallax suave en elementos
+// ============================================================================
+
+/**
+ * Inicializa efecto parallax en elementos seleccionados
+ */
+function initParallax() {
+    const parallaxElements = [
+        { selector: '.orbit-center', speed: 0.05, direction: 'up' },
+        { selector: '.hero-code-window', speed: 0.03, direction: 'up' },
+        { selector: '.envelope-animation', speed: 0.04, direction: 'up' }
+    ];
+
+    function updateParallax() {
+        const scrollY = window.pageYOffset;
+
+        parallaxElements.forEach(function (item) {
+            const elements = document.querySelectorAll(item.selector);
+            elements.forEach(function (el) {
+                const rect = el.getBoundingClientRect();
+                const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+                if (isInView) {
+                    const offset = scrollY * item.speed;
+                    const direction = item.direction === 'up' ? -1 : 1;
+                    el.style.transform = `translateY(${offset * direction}px)`;
+                }
+            });
+        });
+    }
+
+    window.addEventListener('scroll', updateParallax, { passive: true });
+
+    console.log('✅ Parallax inicializado');
+}
+
+// ============================================================================
+// MÓDULO: RIPPLE EFFECT
+// Efecto de onda en clics de botones
+// ============================================================================
+
+/**
+ * Inicializa efecto ripple en botones
+ */
+function initRippleEffect() {
+    const buttons = document.querySelectorAll('.btn-neon, .btn-outline-neon, .btn-submit');
+
+    buttons.forEach(function (btn) {
+        btn.style.position = 'relative';
+        btn.style.overflow = 'hidden';
+
+        btn.addEventListener('click', function (e) {
+            const rect = btn.getBoundingClientRect();
+            const ripple = document.createElement('span');
+
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.className = 'ripple';
+            ripple.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+            `;
+
+            btn.appendChild(ripple);
+
+            setTimeout(function () {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    console.log('✅ Ripple effect inicializado');
+}
+
+// ============================================================================
+// MÓDULO: STAGGER ANIMATIONS
+// Animaciones escalonadas para elementos en lista
+// ============================================================================
+
+/**
+ * Inicializa animaciones escalonadas
+ */
+function initStaggerAnimations() {
+    const staggerContainers = document.querySelectorAll('.skills-grid, .tech-stack-large, .social-links-contact');
+
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                const children = entry.target.children;
+                Array.from(children).forEach(function (child, index) {
+                    child.classList.add('stagger-item');
+                    setTimeout(function () {
+                        child.classList.add('visible');
+                    }, index * 100);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    staggerContainers.forEach(function (container) {
+        observer.observe(container);
+    });
+
+    console.log('✅ Stagger animations inicializadas');
+}
+
+// ============================================================================
+// MÓDULO: TILT EFFECT
+// Efecto de inclinación 3D en tarjetas
+// ============================================================================
+
+/**
+ * Inicializa efecto tilt en tarjetas de proyectos
+ */
+function initTiltEffect() {
+    const tiltElements = document.querySelectorAll('.browser-mockup, .skill-mini-card');
+
+    tiltElements.forEach(function (el) {
+        el.addEventListener('mousemove', function (e) {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+        });
+
+        el.addEventListener('mouseleave', function () {
+            el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+        });
+    });
+
+    console.log('✅ Tilt effect inicializado');
+}
+
+// ============================================================================
+// INICIALIZACIÓN DE TODOS LOS NUEVOS MÓDULOS
+// ============================================================================
+
+/**
+ * Inicializa todos los efectos visuales premium
+ * Se ejecuta después de que el DOM esté listo
+ */
+function initPremiumEffects() {
+    // Pequeño delay para asegurar que todo esté cargado
+    setTimeout(function () {
+        initParticles();
+        initMagneticButtons();
+        initAnimatedCounters();
+        initTypewriter();
+        initScrollProgress();
+        initParallax();
+        initRippleEffect();
+        initStaggerAnimations();
+        initTiltEffect();
+
+        console.log('🎨 Todos los efectos premium inicializados');
+    }, 100);
+}
+
+// Ejecutar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPremiumEffects);
+} else {
+    initPremiumEffects();
+}
+

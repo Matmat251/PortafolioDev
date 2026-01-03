@@ -39,6 +39,11 @@
 </head>
 
 <body>
+    <!-- ============================================================================
+         PARTICLES CONTAINER - Partículas flotantes en hero
+    ============================================================================ -->
+    <div id="particles-container" class="particles-container"></div>
+
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
@@ -463,7 +468,10 @@
                         <span class="section-badge"><i class="fa-solid fa-envelope"></i> Contacto</span>
                         <h2 class="section-title gradient-text">Envíame un mensaje</h2>
 
-                        <form id="contactForm" class="contact-form">
+                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xpwzgvjk"
+                            method="POST">
+                            <input type="hidden" name="_subject" value="Nuevo mensaje desde tu Portafolio">
+                            <input type="hidden" name="_next" value="https://matmat251.github.io/hs-courrier/">
                             <div class="row g-4">
                                 <div class="col-md-6">
                                     <div class="form-floating-custom">
@@ -475,8 +483,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating-custom">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder=" "
-                                            required>
+                                        <input type="email" class="form-control" id="email" name="_replyto"
+                                            placeholder=" " required>
                                         <label for="email">Tu email</label>
                                         <i class="fa-solid fa-at input-icon"></i>
                                     </div>
