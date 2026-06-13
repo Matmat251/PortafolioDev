@@ -26,32 +26,32 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#0050d4",
-                        "primary-dim": "#0046bb",
-                        "primary-container": "#7b9cff",
-                        "on-primary": "#f1f2ff",
-                        "on-primary-container": "#001e5a",
-                        "secondary": "#00647c",
-                        "secondary-container": "#81deff",
-                        "on-secondary": "#e2f6ff",
-                        "on-secondary-container": "#004e61",
-                        "tertiary": "#994100",
-                        "tertiary-container": "#ff955a",
-                        "on-tertiary": "#fff0e9",
-                        "on-tertiary-container": "#552100",
-                        "surface": "#f5f7f9",
-                        "surface-container": "#e5e9eb",
-                        "surface-container-low": "#eef1f3",
-                        "surface-container-high": "#dfe3e6",
-                        "surface-container-highest": "#d9dde0",
-                        "surface-container-lowest": "#ffffff",
-                        "on-surface": "#2c2f31",
-                        "on-surface-variant": "#595c5e",
-                        "outline": "#747779",
-                        "outline-variant": "#abadaf",
-                        "inverse-surface": "#0b0f10",
-                        "inverse-primary": "#618bff",
-                        "error": "#b31b25",
+                        "primary": "var(--color-primary)",
+                        "primary-dim": "var(--color-primary-dim)",
+                        "primary-container": "var(--color-primary-container)",
+                        "on-primary": "var(--color-on-primary)",
+                        "on-primary-container": "var(--color-on-primary-container)",
+                        "secondary": "var(--color-secondary)",
+                        "secondary-container": "var(--color-secondary-container)",
+                        "on-secondary": "var(--color-on-secondary)",
+                        "on-secondary-container": "var(--color-on-secondary-container)",
+                        "tertiary": "var(--color-tertiary)",
+                        "tertiary-container": "var(--color-tertiary-container)",
+                        "on-tertiary": "var(--color-on-tertiary)",
+                        "on-tertiary-container": "var(--color-on-tertiary-container)",
+                        "surface": "var(--color-surface)",
+                        "surface-container": "var(--color-surface-container)",
+                        "surface-container-low": "var(--color-surface-container-low)",
+                        "surface-container-high": "var(--color-surface-container-high)",
+                        "surface-container-highest": "var(--color-surface-container-highest)",
+                        "surface-container-lowest": "var(--color-surface-container-lowest)",
+                        "on-surface": "var(--color-on-surface)",
+                        "on-surface-variant": "var(--color-on-surface-variant)",
+                        "outline": "var(--color-outline)",
+                        "outline-variant": "var(--color-outline-variant)",
+                        "inverse-surface": "var(--color-inverse-surface)",
+                        "inverse-primary": "var(--color-inverse-primary)",
+                        "error": "var(--color-error)",
                     },
                     borderRadius: {
                         "DEFAULT": "0.25rem",
@@ -72,6 +72,70 @@
     </script>
 
     <style>
+        :root {
+            --color-primary: #0050d4;
+            --color-primary-dim: #0046bb;
+            --color-primary-container: #7b9cff;
+            --color-on-primary: #f1f2ff;
+            --color-on-primary-container: #001e5a;
+            --color-secondary: #00647c;
+            --color-secondary-container: #81deff;
+            --color-on-secondary: #e2f6ff;
+            --color-on-secondary-container: #004e61;
+            --color-tertiary: #994100;
+            --color-tertiary-container: #ff955a;
+            --color-on-tertiary: #fff0e9;
+            --color-on-tertiary-container: #552100;
+            --color-surface: #f5f7f9;
+            --color-surface-container: #e5e9eb;
+            --color-surface-container-low: #eef1f3;
+            --color-surface-container-high: #dfe3e6;
+            --color-surface-container-highest: #d9dde0;
+            --color-surface-container-lowest: #ffffff;
+            --color-on-surface: #2c2f31;
+            --color-on-surface-variant: #595c5e;
+            --color-outline: #747779;
+            --color-outline-variant: #abadaf;
+            --color-inverse-surface: #0b0f10;
+            --color-inverse-primary: #618bff;
+            --color-error: #b31b25;
+        }
+
+        .dark {
+            --color-primary: #3b82f6;
+            --color-primary-dim: #2563eb;
+            --color-primary-container: #1d4ed8;
+            --color-on-primary: #ffffff;
+            --color-on-primary-container: #dbeafe;
+            --color-secondary: #0ea5e9;
+            --color-secondary-container: #0284c7;
+            --color-on-secondary: #ffffff;
+            --color-on-secondary-container: #e0f2fe;
+            --color-tertiary: #f97316;
+            --color-tertiary-container: #ea580c;
+            --color-on-tertiary: #ffffff;
+            --color-on-tertiary-container: #ffedd5;
+            
+            --color-surface: #0f172a;
+            --color-surface-container: #1e293b;
+            --color-surface-container-low: #1e293b;
+            --color-surface-container-high: #334155;
+            --color-surface-container-highest: #475569;
+            --color-surface-container-lowest: #020617;
+            
+            --color-on-surface: #f8fafc;
+            --color-on-surface-variant: #cbd5e1;
+            --color-outline: #64748b;
+            --color-outline-variant: #475569;
+            --color-inverse-surface: #f8fafc;
+            --color-inverse-primary: #3b82f6;
+            --color-error: #ef4444;
+        }
+
+        body {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
             display: inline-block;
@@ -460,8 +524,8 @@
                         const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
                         if (!gl) return;
                         const vs = `attribute vec2 a_position; varying vec2 v_texCoord; void main() { v_texCoord = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }`;
-                        const fs = `precision highp float; uniform float u_time; varying vec2 v_texCoord;
-void main() { vec2 uv = v_texCoord; vec3 c1 = vec3(0.145, 0.388, 0.922); vec3 c2 = vec3(0.961, 0.969, 0.976);
+                        const fs = `precision highp float; uniform float u_time; uniform float u_dark; varying vec2 v_texCoord;
+void main() { vec2 uv = v_texCoord; vec3 c1 = vec3(0.145, 0.388, 0.922); vec3 c2 = mix(vec3(0.961, 0.969, 0.976), vec3(0.058, 0.09, 0.165), u_dark);
 float n = sin(uv.x*10.0+u_time*0.5)*cos(uv.y*10.0+u_time*0.5)*0.02; float d = distance(uv, vec2(0.5+n))*0.5;
 vec3 color = mix(c2, c1*0.05, 1.0-d); gl_FragColor = vec4(color, 1.0); }`;
                         function cs(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
@@ -474,10 +538,15 @@ vec3 color = mix(c2, c1*0.05, 1.0-d); gl_FragColor = vec4(color, 1.0); }`;
                         const pos = gl.getAttribLocation(prog, 'a_position');
                         gl.enableVertexAttribArray(pos); gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
                         const uTime = gl.getUniformLocation(prog, 'u_time');
+                        const uDark = gl.getUniformLocation(prog, 'u_dark');
                         function render(t) {
                             if (typeof ResizeObserver === 'undefined') syncSize();
                             gl.viewport(0, 0, canvas.width, canvas.height);
                             if (uTime) gl.uniform1f(uTime, t * 0.001);
+                            if (uDark) {
+                                const isDark = document.documentElement.classList.contains('dark') ? 1.0 : 0.0;
+                                gl.uniform1f(uDark, isDark);
+                            }
                             gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
                             requestAnimationFrame(render);
                         }
