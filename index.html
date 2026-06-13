@@ -1,621 +1,1186 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="scroll-smooth" lang="es">
 
 <head>
-    <!-- Meta Tags Básicos -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio profesional de MathewDev - Desarrollador Web Full Stack">
-    <meta name="author" content="MathewDev">
-    <meta name="keywords" content="portafolio, desarrollador, ingeniero sistemas, web developer, full stack">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MathewDev | Portafolio Desarrollador Full Stack</title>
+    <meta content="Portafolio profesional de Mathew Tenorio - Desarrollador Web Full Stack apasionado por crear aplicaciones web modernas y funcionales." name="description" />
+    <meta name="author" content="MathewDev" />
+    <meta name="keywords" content="portafolio, desarrollador, ingeniero sistemas, web developer, full stack" />
 
-    <title>MathewDev | Portafolio</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
-    <!-- Bootstrap 5.3.2 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Materialize CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0050d4",
+                        "primary-dim": "#0046bb",
+                        "primary-container": "#7b9cff",
+                        "on-primary": "#f1f2ff",
+                        "on-primary-container": "#001e5a",
+                        "secondary": "#00647c",
+                        "secondary-container": "#81deff",
+                        "on-secondary": "#e2f6ff",
+                        "on-secondary-container": "#004e61",
+                        "tertiary": "#994100",
+                        "tertiary-container": "#ff955a",
+                        "on-tertiary": "#fff0e9",
+                        "on-tertiary-container": "#552100",
+                        "surface": "#f5f7f9",
+                        "surface-container": "#e5e9eb",
+                        "surface-container-low": "#eef1f3",
+                        "surface-container-high": "#dfe3e6",
+                        "surface-container-highest": "#d9dde0",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#2c2f31",
+                        "on-surface-variant": "#595c5e",
+                        "outline": "#747779",
+                        "outline-variant": "#abadaf",
+                        "inverse-surface": "#0b0f10",
+                        "inverse-primary": "#618bff",
+                        "error": "#b31b25",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px",
+                    },
+                    fontFamily: {
+                        "headline": ["Sora", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["JetBrains Mono", "monospace"],
+                    },
+                },
+            },
+        }
+    </script>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            transition: background 0.3s, border-color 0.3s;
+        }
 
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
 
-    <!-- AOS - Animate On Scroll Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        .hero-gradient {
+            background: linear-gradient(135deg, #0050d4 0%, #00647c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="styles.css">
+        .dark .hero-gradient {
+            background: linear-gradient(135deg, #618bff 0%, #0891b2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Reveal CSS */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .code-window-shadow {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Lightbox */
+        .lightbox-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 9999; display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .lightbox-modal.active { opacity: 1; visibility: visible; }
+        .lightbox-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.92); backdrop-filter: blur(20px);
+        }
+        .lightbox-container {
+            position: relative; z-index: 1; width: 90%; max-width: 1200px;
+            display: flex; flex-direction: column; align-items: center;
+            transform: scale(0.9) translateY(20px); transition: all 0.3s ease;
+        }
+        .lightbox-modal.active .lightbox-container { transform: scale(1) translateY(0); }
+        .lightbox-close {
+            position: absolute; top: -60px; right: 0;
+            background: transparent; border: 2px solid rgba(255,255,255,0.2);
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            font-size: 1.5rem; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; transition: all 0.3s; z-index: 10;
+        }
+        .lightbox-close:hover { background: white; color: #1e293b; transform: rotate(90deg); }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.2);
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; z-index: 10;
+        }
+        .lightbox-nav:hover { background: #0050d4; border-color: #0050d4; }
+        .lightbox-prev { left: -70px; }
+        .lightbox-next { right: -70px; }
+        .lightbox-image {
+            max-width: 100%; max-height: 65vh; object-fit: contain;
+            border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+        .lightbox-thumbnails {
+            display: flex; gap: 10px; margin-top: 20px; padding: 12px;
+            background: rgba(255,255,255,0.04); border-radius: 12px; overflow-x: auto;
+        }
+        .lightbox-thumb {
+            width: 80px; height: 50px; border-radius: 8px; overflow: hidden;
+            cursor: pointer; opacity: 0.4; transition: all 0.3s;
+            border: 3px solid transparent; flex-shrink: 0;
+        }
+        .lightbox-thumb:hover { opacity: 0.7; }
+        .lightbox-thumb.active { opacity: 1; border-color: #0050d4; }
+        .lightbox-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+        @media (max-width: 768px) {
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+            .lightbox-nav { width: 40px; height: 40px; }
+            .lightbox-close { top: -50px; width: 40px; height: 40px; }
+            .lightbox-thumbnails { display: none; }
+        }
+    </style>
 </head>
 
-<body>
-    <!-- ============================================================================
-         PARTICLES CONTAINER - Partículas flotantes en hero
-    ============================================================================ -->
-    <div id="particles-container" class="particles-container"></div>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#inicio">
-                <i class="fa-solid fa-code"></i>
-                <span class="brand-text">Mathew<span class="brand-accent">Dev</span></span>
-            </a>
+    <!-- Background Animation -->
+    <div class="fixed inset-0 w-full h-full -z-10 pointer-events-none opacity-40">
+        <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+        <div id="threejs-bg" style="width:100%;height:100%"></div>
+        <script>
+            (function () {
+                const container = document.getElementById('threejs-bg');
+                const width = container.clientWidth || window.innerWidth;
+                const height = container.clientHeight || window.innerHeight;
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+                const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                renderer.setSize(width, height);
+                renderer.setPixelRatio(window.devicePixelRatio);
+                container.appendChild(renderer.domElement);
 
-            <button class="navbar-toggler" type="button" id="hamburgerBtn" aria-controls="navbarMain"
-                aria-expanded="false" aria-label="Abrir menú de navegación">
-                <span class="navbar-toggler-icon"></span>
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+                scene.add(ambientLight);
+                const pointLight = new THREE.PointLight(0x2563eb, 1);
+                pointLight.position.set(5, 5, 5);
+                scene.add(pointLight);
+
+                const centerGeometry = new THREE.IcosahedronGeometry(0.8, 1);
+                const centerMaterial = new THREE.MeshPhongMaterial({
+                    color: 0x2563eb, wireframe: true, transparent: true, opacity: 0.8
+                });
+                const centerIcon = new THREE.Mesh(centerGeometry, centerMaterial);
+                scene.add(centerIcon);
+
+                const orbits = new THREE.Group();
+                scene.add(orbits);
+                const technologies = [
+                    { color: 0xe34f26 }, { color: 0x1572b6 }, { color: 0xf7df1e },
+                    { color: 0x61dafb }, { color: 0x339933 }, { color: 0x007396 },
+                    { color: 0x777bb4 }, { color: 0x4479a1 }
+                ];
+                const orbitItems = [];
+                technologies.forEach((tech, i) => {
+                    const angle = (i / technologies.length) * Math.PI * 2;
+                    const geo = new THREE.SphereGeometry(0.3, 16, 16);
+                    const mat = new THREE.MeshPhongMaterial({ color: tech.color });
+                    const mesh = new THREE.Mesh(geo, mat);
+                    mesh.position.x = Math.cos(angle) * 3.5;
+                    mesh.position.z = Math.sin(angle) * 3.5;
+                    orbits.add(mesh);
+                    orbitItems.push({ mesh, angle });
+                });
+
+                camera.position.z = 8;
+                camera.position.y = 2;
+                camera.lookAt(0, 0, 0);
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    const time = Date.now() * 0.001;
+                    centerIcon.rotation.y += 0.01;
+                    centerIcon.rotation.z += 0.005;
+                    orbits.rotation.y += 0.005;
+                    orbitItems.forEach((item, i) => {
+                        item.mesh.position.y = Math.sin(time + i) * 0.5;
+                    });
+                    renderer.render(scene, camera);
+                }
+
+                window.addEventListener('resize', () => {
+                    const w = container.clientWidth || window.innerWidth;
+                    const h = container.clientHeight || window.innerHeight;
+                    camera.aspect = w / h;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(w, h);
+                });
+                animate();
+            })();
+        </script>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-6 md:px-8 h-16 max-w-7xl mx-auto left-1/2 -translate-x-1/2 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm transition-all">
+        <a href="#inicio" class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-2xl">code</span>
+            <span class="text-xl font-headline font-black tracking-tight">
+                <span class="text-primary">Mathew</span><span class="text-tertiary">Dev</span>
+            </span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body text-sm font-medium" href="#inicio">Inicio</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body text-sm font-medium" href="#sobre-mi">Sobre Mí</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body text-sm font-medium" href="#proyectos">Proyectos</a>
+            <a class="text-on-surface-variant hover:text-primary transition-colors font-body text-sm font-medium" href="#contacto">Contacto</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <!-- Theme Toggle Button -->
+            <button id="themeToggleBtn" class="p-2 hover:bg-primary/5 dark:hover:bg-white/5 rounded-lg transition-all flex items-center justify-center text-primary dark:text-tertiary" title="Cambiar tema">
+                <span class="material-symbols-outlined text-2xl dark:hidden">dark_mode</span>
+                <span class="material-symbols-outlined text-2xl hidden dark:inline-block">light_mode</span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#sobre-mi">Sobre Mí</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#proyectos">Proyectos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
-                    </li>
-                </ul>
-            </div>
+            
+            <!-- Mobile menu button -->
+            <button id="mobileMenuBtn" class="md:hidden p-2 hover:bg-primary/5 rounded-lg transition-all">
+                <span class="material-symbols-outlined text-primary">menu</span>
+            </button>
         </div>
     </nav>
 
-    <!-- ============================================================================
-         HERO SECTION - Entrada desde la izquierda
-    ============================================================================ -->
-    <section id="inicio" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center min-vh-100">
-                <!-- Contenido desde la IZQUIERDA -->
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
-                    <div class="hero-content-left">
-                        <p class="hero-badge">
-                            <i class="fa-solid fa-sparkles"></i> Disponible para trabajar
-                        </p>
-                        <p class="hero-subtitle">
-                            <span class="typing-cursor">_</span> Hola, soy
-                        </p>
-                        <h1 class="hero-title">
-                            <span class="gradient-text">Mathew</span>
-                            <span class="gradient-text-accent">Dev</span>
-                        </h1>
-                        <h2 class="hero-role">
-                            <i class="fa-solid fa-laptop-code"></i> Desarrollador Web Full Stack
-                        </h2>
-                        <p class="hero-description">
-                            Estudiante de Ingeniería de Sistemas apasionado por crear aplicaciones web
-                            modernas y funcionales. Transformando ideas en código limpio y eficiente.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#proyectos" class="btn-neon waves-effect waves-light">
-                                <i class="fa-solid fa-rocket"></i>
-                                Ver Proyectos
-                            </a>
-                            <a href="#contacto" class="btn-outline-neon">
-                                <i class="fa-solid fa-paper-plane"></i>
-                                Contactar
-                            </a>
-                        </div>
-                        <!-- Stats rápidos -->
-                        <div class="hero-stats">
-                            <div class="stat-item">
-                                <span class="stat-number">3+</span>
-                                <span class="stat-label">Proyectos</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">5+</span>
-                                <span class="stat-label">Tecnologías</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number">100%</span>
-                                <span class="stat-label">Pasión</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Imagen grande desde la DERECHA -->
-                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400">
-                    <div class="hero-image-container">
-                        <div class="hero-image-wrapper">
-                            <div class="hero-code-window">
-                                <div class="code-header">
-                                    <span class="dot red"></span>
-                                    <span class="dot yellow"></span>
-                                    <span class="dot green"></span>
-                                    <span class="code-title">developer.js</span>
-                                </div>
-                                <div class="code-content">
-                                    <pre><code><span class="code-keyword">const</span> <span class="code-variable">developer</span> = {
-    <span class="code-property">nombre</span>: <span class="code-string">"Mathew Tenorio"</span>,
-    <span class="code-property">rol</span>: <span class="code-string">"Full Stack Developer"</span>,
-    <span class="code-property">skills</span>: [
-        <span class="code-string">"JavaScript"</span>, <span class="code-string">"React"</span>,
-        <span class="code-string">"Node.js"</span>, <span class="code-string">"Java"</span>,
-        <span class="code-string">"SQL"</span>, <span class="code-string">"PHP"</span>
-    ],
-    <span class="code-property">pasion</span>: <span class="code-boolean">true</span>,
-    <span class="code-property">disponible</span>: <span class="code-boolean">true</span>
-};
-
-<span class="code-keyword">export default</span> developer;</code></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Scroll indicator -->
-        <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="1500">
-            <span>Scroll</span>
-            <i class="fa-solid fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- ============================================================================
-         ABOUT SECTION - Imagen IZQUIERDA, Contenido DERECHA
-    ============================================================================ -->
-    <section id="sobre-mi" class="about-section section-alternate">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Imagen grande desde la IZQUIERDA -->
-                <div class="col-lg-6 order-lg-1 order-2" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="about-image-container">
-                        <div class="about-visual">
-                            <div class="skill-orbit">
-                                <div class="orbit-center">
-                                    <i class="fa-solid fa-code"></i>
-                                </div>
-                                <div class="orbit-ring ring-1">
-                                    <div class="orbit-icon" style="--i:0"><i class="fa-brands fa-html5"></i></div>
-                                    <div class="orbit-icon" style="--i:1"><i class="fa-brands fa-css3-alt"></i></div>
-                                    <div class="orbit-icon" style="--i:2"><i class="fa-brands fa-js"></i></div>
-                                    <div class="orbit-icon" style="--i:3"><i class="fa-brands fa-react"></i></div>
-                                </div>
-                                <div class="orbit-ring ring-2">
-                                    <div class="orbit-icon" style="--i:0"><i class="fa-brands fa-node-js"></i></div>
-                                    <div class="orbit-icon" style="--i:1"><i class="fa-brands fa-java"></i></div>
-                                    <div class="orbit-icon" style="--i:2"><i class="fa-brands fa-php"></i></div>
-                                    <div class="orbit-icon" style="--i:3"><i class="fa-solid fa-database"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contenido desde la DERECHA -->
-                <div class="col-lg-6 order-lg-2 order-1" data-aos="fade-left" data-aos-duration="1000"
-                    data-aos-delay="200">
-                    <div class="section-content-right">
-                        <span class="section-badge"><i class="fa-solid fa-user"></i> Sobre Mí</span>
-                        <h2 class="section-title gradient-text">Mis Habilidades</h2>
-                        <p class="section-description">
-                            Soy un desarrollador Full Stack apasionado por crear soluciones web innovadoras.
-                            Mi enfoque combina diseño atractivo con código limpio y eficiente.
-                        </p>
-
-                        <!-- Skill Cards Grid -->
-                        <div class="skills-grid">
-                            <div class="skill-mini-card" data-aos="zoom-in" data-aos-delay="100">
-                                <div class="skill-mini-icon cyan">
-                                    <i class="fa-solid fa-palette"></i>
-                                </div>
-                                <div class="skill-mini-info">
-                                    <h5>Frontend</h5>
-                                    <p>React, HTML, CSS, JavaScript</p>
-                                </div>
-                            </div>
-                            <div class="skill-mini-card" data-aos="zoom-in" data-aos-delay="200">
-                                <div class="skill-mini-icon purple">
-                                    <i class="fa-solid fa-server"></i>
-                                </div>
-                                <div class="skill-mini-info">
-                                    <h5>Backend</h5>
-                                    <p>Node.js, Java, PHP, SQL</p>
-                                </div>
-                            </div>
-                            <div class="skill-mini-card" data-aos="zoom-in" data-aos-delay="300">
-                                <div class="skill-mini-icon orange">
-                                    <i class="fa-solid fa-toolbox"></i>
-                                </div>
-                                <div class="skill-mini-info">
-                                    <h5>Herramientas</h5>
-                                    <p>Git, GitHub, VS Code</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================================
-         PROJECTS SECTION - Contenido IZQUIERDA, Imagen DERECHA (alternado)
-    ============================================================================ -->
-    <section id="proyectos" class="projects-section">
-        <div class="container">
-            <!-- Título de sección -->
-            <div class="text-center mb-5" data-aos="fade-up">
-                <span class="section-badge center"><i class="fa-solid fa-rocket"></i> Portafolio</span>
-                <h2 class="section-title gradient-text">Mis Proyectos</h2>
-                <p class="section-subtitle">Una selección de mis trabajos más destacados</p>
-            </div>
-
-            <!-- Proyecto 1: Contenido IZQUIERDA, Preview DERECHA -->
-            <div class="project-showcase" data-aos="fade-up" data-aos-duration="800">
-                <div class="row align-items-center">
-                    <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
-                        <div class="project-info">
-                            <span class="project-number">01</span>
-                            <span class="project-badge cyan">Página Web</span>
-                            <h3 class="project-title-large">HSSC GROUP</h3>
-                            <p class="project-description-large">
-                                Página web informativa para empresa de courier con servicios de importación,
-                                información de contacto y galería de entregas exitosas. Diseño moderno y responsive.
-                            </p>
-                            <div class="tech-stack-large">
-                                <span class="tech-tag"><i class="fa-brands fa-html5"></i> HTML5</span>
-                                <span class="tech-tag"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
-                                <span class="tech-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://matmat251.github.io/hs-courrier/" target="_blank" class="btn-neon">
-                                    <i class="fa-solid fa-external-link"></i> Ver Demo
-                                </a>
-                                <a href="https://github.com/matmat251/hs-courrier" target="_blank"
-                                    class="btn-outline-neon">
-                                    <i class="fa-brands fa-github"></i> Código
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                        <div class="project-preview">
-                            <div class="browser-mockup gallery-trigger" data-gallery="hssc">
-                                <div class="browser-header">
-                                    <span class="dot red"></span>
-                                    <span class="dot yellow"></span>
-                                    <span class="dot green"></span>
-                                    <span class="browser-url">matmat251.github.io/hs-courrier</span>
-                                </div>
-                                <div class="browser-content">
-                                    <img src="img/hs-courrier.png" alt="HSSC GROUP" class="project-screenshot">
-                                </div>
-                                <!-- Indicador de galería -->
-                                <div class="gallery-indicator">
-                                    <i class="fa-solid fa-images"></i>
-                                    <span>Ver 4 imágenes</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 2: Preview IZQUIERDA, Contenido DERECHA (alternado) -->
-            <div class="project-showcase featured-project" data-aos="fade-up" data-aos-duration="800">
-                <div class="featured-label"><i class="fa-solid fa-star"></i> Proyecto Destacado</div>
-                <div class="row align-items-center">
-                    <div class="col-lg-7 order-lg-1 order-2" data-aos="fade-right" data-aos-duration="1000">
-                        <div class="project-preview">
-                            <div class="browser-mockup gallery-trigger" data-gallery="fastwheels">
-                                <div class="browser-header">
-                                    <span class="dot red"></span>
-                                    <span class="dot yellow"></span>
-                                    <span class="dot green"></span>
-                                    <span class="browser-url">fastwheels.com</span>
-                                </div>
-                                <div class="browser-content">
-                                    <img src="img/fast-wheels.png" alt="Fast Wheels" class="project-screenshot">
-                                </div>
-                                <!-- Indicador de galería -->
-                                <div class="gallery-indicator">
-                                    <i class="fa-solid fa-images"></i>
-                                    <span>Ver 14 imágenes</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 order-lg-2 order-1" data-aos="fade-left" data-aos-duration="1000"
-                        data-aos-delay="200">
-                        <div class="project-info right-aligned">
-                            <span class="project-number">02</span>
-                            <span class="project-badge pink">Sistema Web</span>
-                            <h3 class="project-title-large">Fast Wheels</h3>
-                            <p class="project-description-large">
-                                Sistema completo de renta de autos con catálogo de vehículos, reservaciones,
-                                gestión de clientes y panel de administración. Backend robusto con Java.
-                            </p>
-                            <div class="tech-stack-large">
-                                <span class="tech-tag"><i class="fa-brands fa-java"></i> Java</span>
-                                <span class="tech-tag"><i class="fa-solid fa-database"></i> SQL Server</span>
-                                <span class="tech-tag"><i class="fa-brands fa-bootstrap"></i> Bootstrap</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/matmat251/rent-drive" target="_blank" class="btn-neon">
-                                    <i class="fa-brands fa-github"></i> Ver Código
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Proyecto 3: Contenido IZQUIERDA, Preview DERECHA -->
-            <div class="project-showcase" data-aos="fade-up" data-aos-duration="800">
-                <div class="row align-items-center">
-                    <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
-                        <div class="project-info">
-                            <span class="project-number">03</span>
-                            <span class="project-badge purple">Sistema Web</span>
-                            <h3 class="project-title-large">UltraTech</h3>
-                            <p class="project-description-large">
-                                Sistema de gestión para técnicos de computadora con control de órdenes de servicio,
-                                inventario de repuestos y facturación automatizada.
-                            </p>
-                            <div class="tech-stack-large">
-                                <span class="tech-tag"><i class="fa-brands fa-java"></i> Java</span>
-                                <span class="tech-tag"><i class="fa-solid fa-database"></i> MySQL</span>
-                                <span class="tech-tag"><i class="fa-brands fa-js"></i> JavaScript</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="https://github.com/Matmat251/Ultratech" target="_blank" class="btn-neon">
-                                    <i class="fa-brands fa-github"></i> Ver Código
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                        <div class="project-preview">
-                            <div class="browser-mockup gallery-trigger" data-gallery="ultratech">
-                                <div class="browser-header">
-                                    <span class="dot red"></span>
-                                    <span class="dot yellow"></span>
-                                    <span class="dot green"></span>
-                                    <span class="browser-url">ultratech.local</span>
-                                </div>
-                                <div class="browser-content">
-                                    <img src="img/ultratech.png" alt="UltraTech" class="project-screenshot">
-                                </div>
-                                <!-- Indicador de galería -->
-                                <div class="gallery-indicator">
-                                    <i class="fa-solid fa-images"></i>
-                                    <span>Ver 11 imágenes</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Próximos proyectos -->
-            <div class="text-center mt-5" data-aos="fade-up">
-                <p class="coming-soon-text">
-                    <i class="fa-solid fa-code"></i> Próximamente más proyectos desplegados
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================================
-         CONTACT SECTION - Imagen IZQUIERDA, Form DERECHA
-    ============================================================================ -->
-    <section id="contacto" class="contact-section section-alternate">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Visual IZQUIERDA -->
-                <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
-                    <div class="contact-visual">
-                        <div class="contact-illustration">
-                            <div class="envelope-animation">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
-                            <div class="contact-icons">
-                                <div class="contact-icon-float" style="--delay: 0s">
-                                    <i class="fa-brands fa-github"></i>
-                                </div>
-                                <div class="contact-icon-float" style="--delay: 0.5s">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                </div>
-                                <div class="contact-icon-float" style="--delay: 1s">
-                                    <i class="fa-solid fa-at"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="contact-cta">¿Listo para trabajar juntos?</h3>
-                        <p class="contact-cta-text">Estoy disponible para proyectos freelance y oportunidades laborales.
-                        </p>
-
-                        <!-- Social links -->
-                        <div class="social-links-contact">
-                            <a href="https://github.com/matmat251" target="_blank" class="social-btn-large">
-                                <i class="fa-brands fa-github"></i>
-                                <span>GitHub</span>
-                            </a>
-                            <a href="https://wa.me/51952296651" target="_blank" class="social-btn-large whatsapp">
-                                <i class="fa-brands fa-whatsapp"></i>
-                                <span>WhatsApp</span>
-                            </a>
-                            <a href="mailto:mathewteno25@hotmail.com" class="social-btn-large email">
-                                <i class="fa-solid fa-envelope"></i>
-                                <span>Email</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Formulario DERECHA -->
-                <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                    <div class="contact-form-container">
-                        <span class="section-badge"><i class="fa-solid fa-envelope"></i> Contacto</span>
-                        <h2 class="section-title gradient-text">Envíame un mensaje</h2>
-
-                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xpwzgvjk"
-                            method="POST">
-                            <input type="hidden" name="_subject" value="Nuevo mensaje desde tu Portafolio">
-                            <input type="hidden" name="_next" value="https://matmat251.github.io/hs-courrier/">
-                            <div class="row g-4">
-                                <div class="col-md-6">
-                                    <div class="form-floating-custom">
-                                        <input type="text" class="form-control" id="nombre" name="nombre"
-                                            placeholder=" " required>
-                                        <label for="nombre">Tu nombre</label>
-                                        <i class="fa-solid fa-user input-icon"></i>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating-custom">
-                                        <input type="email" class="form-control" id="email" name="_replyto"
-                                            placeholder=" " required>
-                                        <label for="email">Tu email</label>
-                                        <i class="fa-solid fa-at input-icon"></i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating-custom">
-                                        <input type="text" class="form-control" id="asunto" name="asunto"
-                                            placeholder=" ">
-                                        <label for="asunto">Asunto</label>
-                                        <i class="fa-solid fa-tag input-icon"></i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating-custom textarea">
-                                        <textarea class="form-control" id="mensaje" name="mensaje" rows="5"
-                                            placeholder=" " required></textarea>
-                                        <label for="mensaje">Tu mensaje</label>
-                                        <i class="fa-solid fa-message input-icon"></i>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button type="submit" class="btn-neon btn-submit waves-effect waves-light">
-                                        <i class="fa-solid fa-paper-plane"></i>
-                                        Enviar Mensaje
-                                        <span class="btn-shine"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================================
-         LIGHTBOX GALLERY MODAL
-    ============================================================================ -->
-    <div id="lightboxModal" class="lightbox-modal">
-        <div class="lightbox-overlay"></div>
-        <div class="lightbox-container">
-            <!-- Botón cerrar -->
-            <button class="lightbox-close" aria-label="Cerrar galería">
-                <i class="fa-solid fa-xmark"></i>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" id="mobileMenuOverlay"></div>
+        <div class="absolute top-0 right-0 w-72 h-full bg-surface-container-lowest shadow-2xl p-8 flex flex-col gap-6">
+            <button id="mobileMenuClose" class="self-end p-2 hover:bg-primary/5 rounded-lg">
+                <span class="material-symbols-outlined text-on-surface">close</span>
             </button>
-
-            <!-- Navegación -->
-            <button class="lightbox-nav lightbox-prev" aria-label="Imagen anterior">
-                <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button class="lightbox-nav lightbox-next" aria-label="Imagen siguiente">
-                <i class="fa-solid fa-chevron-right"></i>
-            </button>
-
-            <!-- Contenido de la imagen -->
-            <div class="lightbox-content">
-                <img src="" alt="Galería HSSC GROUP" class="lightbox-image">
-                <div class="lightbox-caption">
-                    <span class="lightbox-title"></span>
-                    <span class="lightbox-counter"></span>
-                </div>
-            </div>
-
-            <!-- Thumbnails -->
-            <div class="lightbox-thumbnails" id="lightboxThumbnails">
-                <!-- Se generan dinámicamente -->
-            </div>
+            <a class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors" href="#inicio">Inicio</a>
+            <a class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors" href="#sobre-mi">Sobre Mí</a>
+            <a class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors" href="#proyectos">Proyectos</a>
+            <a class="text-lg font-headline font-bold text-on-surface hover:text-primary transition-colors" href="#contacto">Contacto</a>
         </div>
     </div>
 
-    <!-- ============================================================================
-         FOOTER
-    ============================================================================ -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand" data-aos="fade-up">
-                    <h3>
-                        <i class="fa-solid fa-code"></i>
-                        Mathew<span>Dev</span>
-                    </h3>
-                    <p>Transformando ideas en código</p>
+    <main class="max-w-7xl mx-auto px-6 md:px-8">
+
+        <!-- ==================== HERO SECTION ==================== -->
+        <section class="min-h-screen flex flex-col md:flex-row items-center justify-between pt-28 md:pt-32 pb-16 gap-12" id="inicio">
+            <div class="flex-1 space-y-6">
+                <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-green-100 text-green-700 text-sm font-medium border border-green-200 gap-2">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Disponible para trabajar
                 </div>
 
-                <div class="footer-links-grid" data-aos="fade-up" data-aos-delay="100">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#sobre-mi">Sobre Mí</a>
-                    <a href="#proyectos">Proyectos</a>
-                    <a href="#contacto">Contacto</a>
+                <div class="space-y-2">
+                    <p class="text-base font-label text-on-surface-variant tracking-widest uppercase">_ Hola, soy</p>
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black hero-gradient leading-tight">MathewDev</h1>
+                    <p class="text-xl md:text-2xl font-headline font-semibold text-secondary flex items-center gap-3">
+                        <span class="material-symbols-outlined text-tertiary text-3xl">laptop_mac</span>
+                        Desarrollador Web Full Stack
+                    </p>
                 </div>
 
-                <div class="footer-social" data-aos="fade-up" data-aos-delay="200">
-                    <a href="https://github.com/matmat251" target="_blank" class="social-btn">
-                        <i class="fa-brands fa-github"></i>
+                <p class="text-on-surface-variant text-base md:text-lg max-w-xl leading-relaxed">
+                    Estudiante de Ingeniería de Sistemas apasionado por crear aplicaciones web
+                    modernas y funcionales. Transformando ideas en código limpio y eficiente.
+                </p>
+
+                <div class="flex flex-wrap gap-8 py-4 border-t border-outline-variant/30">
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-black text-primary font-headline">3+</span>
+                        <span class="text-xs uppercase tracking-widest text-outline">Proyectos</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-black text-primary font-headline">5+</span>
+                        <span class="text-xs uppercase tracking-widest text-outline">Tecnologías</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="text-3xl font-black text-primary font-headline">100%</span>
+                        <span class="text-xs uppercase tracking-widest text-outline">Pasión</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a class="px-8 py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:bg-primary-dim hover:scale-105 transition-all flex items-center justify-center gap-2"
+                        href="#proyectos">
+                        <i class="fa-solid fa-rocket"></i> Ver Proyectos
                     </a>
-                    <a href="https://www.instagram.com/m.25.tx" target="_blank" class="social-btn">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="mailto:mathewteno25@hotmail.com" class="social-btn">
-                        <i class="fa-solid fa-envelope"></i>
-                    </a>
-                    <a href="https://wa.me/51952296651" target="_blank" class="social-btn">
-                        <i class="fa-brands fa-whatsapp"></i>
+                    <a class="px-8 py-4 border-2 border-primary/30 text-primary font-bold rounded-xl hover:bg-primary/5 transition-all flex items-center justify-center gap-2"
+                        href="#contacto">
+                        <i class="fa-solid fa-paper-plane"></i> Contactar
                     </a>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2024 MathewDev. Todos los derechos reservados.</p>
+            <!-- Code Window -->
+            <div class="flex-1 w-full max-w-2xl group">
+                <div class="bg-[#0f172a] rounded-2xl overflow-hidden code-window-shadow border border-white/10 transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-2xl">
+                    <div class="bg-[#1e293b] px-4 pt-3 flex items-center justify-between border-b border-white/5">
+                        <div class="flex items-center gap-2">
+                            <div class="flex gap-1.5 mr-4">
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                            </div>
+                            <!-- Tab buttons -->
+                            <div class="flex gap-1">
+                                <button id="tab-profile" class="px-3 py-1.5 rounded-t-lg text-[10px] md:text-xs font-label bg-[#0f172a] text-white border-t-2 border-primary transition-all flex items-center gap-1.5">
+                                    <span class="text-yellow-500 font-bold text-[10px]">JS</span> perfil.js
+                                </button>
+                                <button id="tab-skills" class="px-3 py-1.5 rounded-t-lg text-[10px] md:text-xs font-label text-gray-400 hover:bg-[#0f172a]/40 hover:text-gray-200 transition-all flex items-center gap-1.5">
+                                    <span class="text-blue-400 font-bold text-[10px]">{ }</span> habilidades.json
+                                </button>
+                                <button id="tab-terminal" class="px-3 py-1.5 rounded-t-lg text-[10px] md:text-xs font-label text-gray-400 hover:bg-[#0f172a]/40 hover:text-gray-200 transition-all flex items-center gap-1.5">
+                                    <span class="text-green-400 font-bold text-[10px]">&gt;_</span> terminal.sh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="w-10"></div>
+                    </div>
+                    <div class="p-6 font-label text-xs md:text-sm leading-relaxed min-h-[280px] relative">
+                        <!-- Tab Content 1: profile -->
+                        <div id="content-profile" class="tab-content">
+                            <pre class="text-[#dcdcaa]"><span class="text-[#c084fc]">const</span> <span class="text-[#60a5fa]">developer</span> = {
+  <span class="text-[#f87171]">nombre</span>: <span class="text-[#4ade80]">"Mathew Tenorio"</span>,
+  <span class="text-[#f87171]">rol</span>: <span class="text-[#4ade80]">"Full Stack Developer"</span>,
+  <span class="text-[#f87171]">skills</span>: [
+    <span class="text-[#4ade80]">"JavaScript"</span>, <span class="text-[#4ade80]">"React"</span>,
+    <span class="text-[#4ade80]">"Node.js"</span>, <span class="text-[#4ade80]">"Java"</span>,
+    <span class="text-[#4ade80]">"SQL"</span>, <span class="text-[#4ade80]">"PHP"</span>
+  ],
+  <span class="text-[#f87171]">pasion</span>: <span class="text-[#fbbf24]">true</span>,
+  <span class="text-[#f87171]">disponible</span>: <span class="text-[#fbbf24]">true</span>
+};
+
+<span class="text-[#c084fc]">export default</span> developer;</pre>
+                        </div>
+                        
+                        <!-- Tab Content 2: skills -->
+                        <div id="content-skills" class="tab-content hidden">
+                            <pre class="text-[#d4d4d4]">{
+  <span class="text-[#9cdcfe]">"frontend"</span>: {
+    <span class="text-[#9cdcfe]">"HTML5"</span>: <span class="text-[#b5cea8]">"95%"</span>,
+    <span class="text-[#9cdcfe]">"CSS3"</span>: <span class="text-[#b5cea8]">"90%"</span>,
+    <span class="text-[#9cdcfe]">"JavaScript"</span>: <span class="text-[#b5cea8]">"85%"</span>,
+    <span class="text-[#9cdcfe]">"React"</span>: <span class="text-[#b5cea8]">"80%"</span>
+  },
+  <span class="text-[#9cdcfe]">"backend"</span>: {
+    <span class="text-[#9cdcfe]">"Java"</span>: <span class="text-[#b5cea8]">"90%"</span>,
+    <span class="text-[#9cdcfe]">"Node.js"</span>: <span class="text-[#b5cea8]">"80%"</span>,
+    <span class="text-[#9cdcfe]">"PHP"</span>: <span class="text-[#b5cea8]">"75%"</span>,
+    <span class="text-[#9cdcfe]">"SQL"</span>: <span class="text-[#b5cea8]">"85%"</span>
+  }
+}</pre>
+                        </div>
+                        
+                        <!-- Tab Content 3: terminal -->
+                        <div id="content-terminal" class="tab-content hidden flex flex-col justify-between h-[230px]">
+                            <div id="terminal-history" class="overflow-y-auto max-h-[180px] space-y-1 text-gray-300 pr-1 text-[10px] md:text-xs">
+                                <div>MathewDev OS [Versión 1.0.0]</div>
+                                <div>(c) MathewDev Corp. Todos los derechos reservados.</div>
+                                <div class="text-[#4ade80] mt-1">Escribe "help" o "ayuda" para iniciar:</div>
+                            </div>
+                            <div class="flex items-center gap-1.5 pt-2 border-t border-white/5 mt-auto">
+                                <span class="text-[#60a5fa] font-bold">&gt;</span>
+                                <input type="text" id="terminal-input" class="flex-1 bg-transparent border-none outline-none focus:ring-0 p-0 text-[#4ade80] font-label text-xs md:text-sm placeholder-green-800" placeholder="ayuda..." autocomplete="off" spellcheck="false" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
+
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section class="py-20 md:py-24 grid md:grid-cols-2 gap-12 md:gap-16 items-center" id="sobre-mi">
+            <!-- Skills Orbit Visual -->
+            <div class="h-[400px] md:h-[500px] w-full rounded-3xl overflow-hidden bg-surface-container-low relative">
+                <canvas id="shader-canvas" style="display:block;width:100%;height:100%"></canvas>
+                <script>
+                    (function () {
+                        const canvas = document.getElementById('shader-canvas');
+                        function syncSize() {
+                            const w = canvas.clientWidth || 1280;
+                            const h = canvas.clientHeight || 720;
+                            if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+                        }
+                        if (typeof ResizeObserver !== 'undefined') new ResizeObserver(syncSize).observe(canvas);
+                        syncSize();
+                        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                        if (!gl) return;
+                        const vs = `attribute vec2 a_position; varying vec2 v_texCoord; void main() { v_texCoord = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }`;
+                        const fs = `precision highp float; uniform float u_time; varying vec2 v_texCoord;
+void main() { vec2 uv = v_texCoord; vec3 c1 = vec3(0.145, 0.388, 0.922); vec3 c2 = vec3(0.961, 0.969, 0.976);
+float n = sin(uv.x*10.0+u_time*0.5)*cos(uv.y*10.0+u_time*0.5)*0.02; float d = distance(uv, vec2(0.5+n))*0.5;
+vec3 color = mix(c2, c1*0.05, 1.0-d); gl_FragColor = vec4(color, 1.0); }`;
+                        function cs(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+                        const prog = gl.createProgram();
+                        gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+                        gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+                        gl.linkProgram(prog); gl.useProgram(prog);
+                        const buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+                        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+                        const pos = gl.getAttribLocation(prog, 'a_position');
+                        gl.enableVertexAttribArray(pos); gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+                        const uTime = gl.getUniformLocation(prog, 'u_time');
+                        function render(t) {
+                            if (typeof ResizeObserver === 'undefined') syncSize();
+                            gl.viewport(0, 0, canvas.width, canvas.height);
+                            if (uTime) gl.uniform1f(uTime, t * 0.001);
+                            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                            requestAnimationFrame(render);
+                        }
+                        render(0);
+                    })();
+                </script>
+                <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent pointer-events-none"></div>
+            </div>
+
+            <!-- Skills Content -->
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest border border-primary/15">
+                        <span class="material-symbols-outlined text-sm">person</span> Sobre Mí
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-black text-on-surface hero-gradient inline-block">Mis Habilidades</h2>
+                    <p class="text-on-surface-variant leading-relaxed text-base md:text-lg">
+                        Soy un desarrollador Full Stack apasionado por crear soluciones web innovadoras.
+                        Mi enfoque combina diseño atractivo con código limpio y eficiente.
+                    </p>
+                </div>
+
+                <div class="grid gap-4">
+                    <div class="p-5 glass-panel rounded-2xl border border-outline-variant/20 hover:shadow-xl hover:translate-x-2 transition-all group reveal-element">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary shrink-0 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">brush</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-headline font-bold text-lg">Frontend</h3>
+                                <p class="text-sm text-on-surface-variant dark:text-gray-400 mb-3">React, HTML, CSS, JavaScript</p>
+                                <div class="space-y-1.5">
+                                    <div class="flex justify-between text-xs font-bold text-on-surface-variant dark:text-gray-300">
+                                        <span>React & JavaScript</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="w-full bg-surface-container dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                                        <div class="bg-secondary h-full rounded-full skill-progress-bar" style="width: 0%" data-progress="85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 glass-panel rounded-2xl border border-outline-variant/20 hover:shadow-xl hover:translate-x-2 transition-all group reveal-element">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary shrink-0 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">database</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-headline font-bold text-lg">Backend</h3>
+                                <p class="text-sm text-on-surface-variant dark:text-gray-400 mb-3">Node.js, Java, PHP, SQL</p>
+                                <div class="space-y-1.5">
+                                    <div class="flex justify-between text-xs font-bold text-on-surface-variant dark:text-gray-300">
+                                        <span>Java & Node.js</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="w-full bg-surface-container dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                                        <div class="bg-primary h-full rounded-full skill-progress-bar" style="width: 0%" data-progress="85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 glass-panel rounded-2xl border border-outline-variant/20 hover:shadow-xl hover:translate-x-2 transition-all group reveal-element">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-tertiary/10 rounded-xl flex items-center justify-center text-tertiary shrink-0 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">build</span>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="font-headline font-bold text-lg">Herramientas</h3>
+                                <p class="text-sm text-on-surface-variant dark:text-gray-400 mb-3">Git, GitHub, VS Code</p>
+                                <div class="space-y-1.5">
+                                    <div class="flex justify-between text-xs font-bold text-on-surface-variant dark:text-gray-300">
+                                        <span>Git & Workflow</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="w-full bg-surface-container dark:bg-slate-800 rounded-full h-1.5 overflow-hidden">
+                                        <div class="bg-tertiary h-full rounded-full skill-progress-bar" style="width: 0%" data-progress="80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PROJECTS SECTION ==================== -->
+        <section class="py-20 md:py-24" id="proyectos">
+            <div class="text-center mb-12 md:mb-16 space-y-4 reveal-element">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest border border-primary/15">
+                    <i class="fa-solid fa-rocket"></i> Portafolio
+                </span>
+                <h2 class="text-3xl md:text-5xl font-headline font-black hero-gradient inline-block">Mis Proyectos</h2>
+                <p class="text-on-surface-variant max-w-2xl mx-auto">Una selección de mis trabajos más destacados</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <!-- Project 1: HSSC GROUP -->
+                <div class="group flex flex-col bg-surface-container-lowest rounded-3xl overflow-hidden border border-outline-variant/20 hover:shadow-2xl transition-all duration-500 gallery-trigger cursor-pointer reveal-element" data-gallery="hssc">
+                    <div class="h-56 md:h-64 overflow-hidden bg-surface-container relative">
+                        <img class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                            src="img/hs-courrier.png" alt="HSSC GROUP" />
+                        <div class="absolute bottom-3 right-3 bg-black/70 text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                            <i class="fa-solid fa-images text-tertiary"></i> Ver 4 imágenes
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 space-y-4 flex-1 flex flex-col">
+                        <div>
+                            <span class="text-xs font-bold text-secondary uppercase tracking-widest">01 — Página Web</span>
+                            <h3 class="text-xl font-headline font-bold mt-1">HSSC GROUP</h3>
+                        </div>
+                        <p class="text-on-surface-variant text-sm flex-1">
+                            Página web informativa para empresa de courier con servicios de importación,
+                            información de contacto y galería de entregas exitosas.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-brands fa-html5 mr-1"></i>HTML5</span>
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-brands fa-css3-alt mr-1"></i>CSS3</span>
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-brands fa-js mr-1"></i>JS</span>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <a href="https://matmat251.github.io/hs-courrier/" target="_blank"
+                                class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary-dim transition-all flex items-center gap-1.5"
+                                onclick="event.stopPropagation()">
+                                <i class="fa-solid fa-external-link"></i> Demo
+                            </a>
+                            <a href="https://github.com/matmat251/hs-courrier" target="_blank"
+                                class="px-4 py-2 border border-outline-variant/30 text-on-surface text-sm font-bold rounded-lg hover:bg-surface-container transition-all flex items-center gap-1.5"
+                                onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Fast Wheels (Featured) -->
+                <div class="group flex flex-col md:scale-105 z-10 bg-surface-container-lowest rounded-3xl overflow-hidden border-2 border-tertiary/40 shadow-2xl shadow-tertiary/10 transition-all duration-500 gallery-trigger cursor-pointer reveal-element" data-gallery="fastwheels">
+                    <div class="h-56 md:h-64 overflow-hidden bg-surface-container relative">
+                        <img class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                            src="img/fast-wheels.png" alt="Fast Wheels" />
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-tertiary to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+                            <i class="fa-solid fa-star"></i> Destacado
+                        </div>
+                        <div class="absolute bottom-3 right-3 bg-black/70 text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                            <i class="fa-solid fa-images text-tertiary"></i> Ver 14 imágenes
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 space-y-4 flex-1 flex flex-col">
+                        <div>
+                            <span class="text-xs font-bold text-tertiary uppercase tracking-widest">02 — Sistema Web</span>
+                            <h3 class="text-2xl font-headline font-bold mt-1">Fast Wheels</h3>
+                        </div>
+                        <p class="text-on-surface-variant text-sm flex-1">
+                            Sistema completo de renta de autos con catálogo de vehículos, reservaciones,
+                            gestión de clientes y panel de administración.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-xs font-bold"><i class="fa-brands fa-java mr-1"></i>Java</span>
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-solid fa-database mr-1"></i>SQL Server</span>
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-brands fa-bootstrap mr-1"></i>Bootstrap</span>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <a href="https://github.com/matmat251/rent-drive" target="_blank"
+                                class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary-dim transition-all flex items-center gap-1.5"
+                                onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Ver Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: UltraTech -->
+                <div class="group flex flex-col bg-surface-container-lowest rounded-3xl overflow-hidden border border-outline-variant/20 hover:shadow-2xl transition-all duration-500 gallery-trigger cursor-pointer reveal-element" data-gallery="ultratech">
+                    <div class="h-56 md:h-64 overflow-hidden bg-surface-container relative">
+                        <img class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                            src="img/ultratech.png" alt="UltraTech" />
+                        <div class="absolute bottom-3 right-3 bg-black/70 text-white px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                            <i class="fa-solid fa-images text-tertiary"></i> Ver 11 imágenes
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8 space-y-4 flex-1 flex flex-col">
+                        <div>
+                            <span class="text-xs font-bold text-primary uppercase tracking-widest">03 — Sistema Web</span>
+                            <h3 class="text-xl font-headline font-bold mt-1">UltraTech</h3>
+                        </div>
+                        <p class="text-on-surface-variant text-sm flex-1">
+                            Sistema de gestión para técnicos de computadora con control de órdenes de servicio,
+                            inventario de repuestos y facturación automatizada.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-brands fa-java mr-1"></i>Java</span>
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-solid fa-database mr-1"></i>MySQL</span>
+                            <span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-medium"><i class="fa-brands fa-js mr-1"></i>JS</span>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <a href="https://github.com/Matmat251/Ultratech" target="_blank"
+                                class="px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary-dim transition-all flex items-center gap-1.5"
+                                onclick="event.stopPropagation()">
+                                <i class="fa-brands fa-github"></i> Ver Código
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-on-surface-variant text-sm inline-flex items-center gap-2 px-6 py-3 border-2 border-dashed border-outline-variant/40 rounded-xl reveal-element">
+                    <span class="material-symbols-outlined text-primary">code</span>
+                    Próximamente más proyectos desplegados
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT SECTION ==================== -->
+        <section class="py-20 md:py-24 grid md:grid-cols-2 gap-12 md:gap-16 items-center" id="contacto">
+            <div class="space-y-8 reveal-element">
+                <div class="space-y-4">
+                    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest border border-primary/15">
+                        <span class="material-symbols-outlined text-sm">mail</span> Contacto
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-black text-on-surface">¿Listo para trabajar juntos?</h2>
+                    <p class="text-on-surface-variant text-base md:text-lg leading-relaxed">
+                        Estoy disponible para proyectos freelance y oportunidades laborales.
+                    </p>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <a href="https://github.com/matmat251" target="_blank"
+                        class="flex items-center gap-4 p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all group">
+                        <div class="w-12 h-12 bg-on-surface text-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </div>
+                        <span class="font-headline font-bold">GitHub</span>
+                    </a>
+                    <a href="https://wa.me/51952296651" target="_blank"
+                        class="flex items-center gap-4 p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all group">
+                        <div class="w-12 h-12 bg-green-500 text-white rounded-xl flex items-center justify-center animate-float group-hover:scale-110 transition-transform">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                        </div>
+                        <span class="font-headline font-bold">WhatsApp</span>
+                    </a>
+                    <a href="mailto:mathewteno25@hotmail.com"
+                        class="flex items-center gap-4 p-4 bg-surface-container-lowest border border-outline-variant/20 rounded-2xl hover:shadow-lg hover:-translate-y-1 transition-all group">
+                        <div class="w-12 h-12 bg-tertiary text-white rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </div>
+                        <span class="font-headline font-bold">Email</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="glass-panel p-6 md:p-10 rounded-3xl border border-outline-variant/30 shadow-2xl reveal-element">
+                <h3 class="text-2xl font-headline font-black hero-gradient inline-block mb-6">Envíame un mensaje</h3>
+                <form class="space-y-5" action="https://formspree.io/f/xpwzgvjk" method="POST">
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde tu Portafolio" />
+                    <input type="hidden" name="_next" value="https://matmat251.github.io/PortafolioDev/" />
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-on-surface-variant px-1">Tu nombre</label>
+                            <input name="nombre" required
+                                class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all font-body"
+                                placeholder="Tu nombre" type="text" />
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-on-surface-variant px-1">Tu email</label>
+                            <input name="_replyto" required
+                                class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all font-body"
+                                placeholder="tu@email.com" type="email" />
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-on-surface-variant px-1">Asunto</label>
+                        <input name="asunto"
+                            class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all font-body"
+                            placeholder="Asunto del mensaje" type="text" />
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-on-surface-variant px-1">Tu mensaje</label>
+                        <textarea name="mensaje" required
+                            class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary/30 transition-all font-body"
+                            placeholder="Escribe tu mensaje aquí..." rows="4"></textarea>
+                    </div>
+                    <button type="submit"
+                        class="w-full py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:bg-primary-dim hover:shadow-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== LIGHTBOX GALLERY ==================== -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <div class="lightbox-overlay" id="lightboxOverlay"></div>
+        <div class="lightbox-container">
+            <button class="lightbox-close" id="lightboxClose">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+            <div class="flex flex-col items-center w-full">
+                <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+                <div class="flex justify-between items-center w-full max-w-3xl px-4 py-4 text-white">
+                    <span class="font-headline font-bold text-sm md:text-base" id="lightboxTitle"></span>
+                    <span class="text-xs text-white/60 bg-white/10 px-3 py-1 rounded-full font-label" id="lightboxCounter"></span>
+                </div>
+            </div>
+            <div class="lightbox-thumbnails" id="lightboxThumbnails"></div>
+        </div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant/20 w-full py-10 md:py-12">
+        <div class="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col items-center md:items-start gap-2">
+                <span class="text-lg font-headline font-bold">
+                    <span class="text-primary">Mathew</span><span class="text-tertiary">Dev</span>
+                </span>
+                <p class="text-on-surface-variant text-sm text-center md:text-left">
+                    Transformando ideas en código
+                </p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8">
+                <a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#inicio">Inicio</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#sobre-mi">Sobre Mí</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#proyectos">Proyectos</a>
+                <a class="text-on-surface-variant hover:text-primary transition-all text-sm" href="#contacto">Contacto</a>
+            </div>
+            <div class="flex gap-3">
+                <a href="https://github.com/matmat251" target="_blank"
+                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-white transition-all">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/m.25.tx" target="_blank"
+                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:text-white transition-all">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="mailto:mathewteno25@hotmail.com"
+                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-tertiary hover:text-white transition-all">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/51952296651" target="_blank"
+                    class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-green-500 hover:text-white transition-all">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-8 mt-8 pt-6 border-t border-outline-variant/20 text-center">
+            <p class="text-on-surface-variant text-xs">&copy; 2025 MathewDev. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <!-- SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="main.js"></script>
-
-    <!-- Inicializar AOS con configuración mejorada -->
+    <!-- ==================== SCRIPTS ==================== -->
     <script>
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 80,
-            delay: 0
+        // Gallery Data
+        const galleryData = {
+            hssc: {
+                name: 'HSSC GROUP',
+                images: [
+                    { src: 'img/hs-courrier-1.png', title: 'Página Principal - Conócenos' },
+                    { src: 'img/hs-courrier-2.png', title: 'Sección de Servicios' },
+                    { src: 'img/hs-courrier-3.png', title: 'Tiendas Recomendadas' },
+                    { src: 'img/hs-courrier-4.png', title: 'Formulario de Contacto' }
+                ]
+            },
+            fastwheels: {
+                name: 'Fast Wheels',
+                images: [
+                    { src: 'img/fast-wheels-1.png', title: 'Catálogo de Vehículos' },
+                    { src: 'img/fast-wheels-2.png', title: 'Login de Usuario' },
+                    { src: 'img/fast-wheels-3.png', title: 'Registro de Cliente' },
+                    { src: 'img/fast-wheels-4.png', title: 'Portal Corporativo' },
+                    { src: 'img/fast-wheels-5.png', title: 'Mis Reservas' },
+                    { src: 'img/fast-wheels-6.png', title: 'Perfil de Usuario' },
+                    { src: 'img/fast-wheels-7.png', title: 'Formulario de Reserva' },
+                    { src: 'img/fast-wheels-8.png', title: 'Pago con Tarjeta' },
+                    { src: 'img/fast-wheels-9.png', title: 'Panel de Control Admin' },
+                    { src: 'img/fast-wheels-10.png', title: 'Gestión de Vehículos' },
+                    { src: 'img/fast-wheels-11.png', title: 'Registrar Vehículo' },
+                    { src: 'img/fast-wheels-12.png', title: 'Gestión de Reservas' },
+                    { src: 'img/fast-wheels-13.png', title: 'Directorio de Clientes' },
+                    { src: 'img/fast-wheels-14.png', title: 'Reportes y Análisis' }
+                ]
+            },
+            ultratech: {
+                name: 'UltraTech',
+                images: [
+                    { src: 'img/ultratech-1.png', title: 'Login - Servicio Técnico' },
+                    { src: 'img/ultratech-2.png', title: 'Dashboard Cliente' },
+                    { src: 'img/ultratech-3.png', title: 'Boleta Electrónica' },
+                    { src: 'img/ultratech-4.png', title: 'Lista de Tickets' },
+                    { src: 'img/ultratech-5.png', title: 'Crear Ticket' },
+                    { src: 'img/ultratech-6.png', title: 'Crear Usuario' },
+                    { src: 'img/ultratech-7.png', title: 'Lista de Tickets Admin' },
+                    { src: 'img/ultratech-8.png', title: 'Menú Principal' },
+                    { src: 'img/ultratech-9.png', title: 'Login Admin' },
+                    { src: 'img/ultratech-10.png', title: 'Modificar Ticket' },
+                    { src: 'img/ultratech-11.png', title: 'Modificar Usuario' }
+                ]
+            }
+        };
+
+        // Lightbox Logic
+        const modal = document.getElementById('lightboxModal');
+        const mainImage = document.getElementById('lightboxImage');
+        const titleEl = document.getElementById('lightboxTitle');
+        const counterEl = document.getElementById('lightboxCounter');
+        const thumbsContainer = document.getElementById('lightboxThumbnails');
+        let currentGallery = null;
+        let currentIndex = 0;
+
+        function openLightbox(galleryId) {
+            currentGallery = galleryData[galleryId];
+            if (!currentGallery) return;
+            currentIndex = 0;
+            generateThumbnails();
+            updateImage();
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateImage() {
+            if (!currentGallery) return;
+            const image = currentGallery.images[currentIndex];
+            mainImage.src = image.src;
+            mainImage.alt = image.title;
+            titleEl.textContent = image.title;
+            counterEl.textContent = `${currentIndex + 1} / ${currentGallery.images.length}`;
+            thumbsContainer.querySelectorAll('.lightbox-thumb').forEach((t, i) => {
+                t.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function generateThumbnails() {
+            if (!currentGallery) return;
+            thumbsContainer.innerHTML = '';
+            currentGallery.images.forEach((img, i) => {
+                const thumb = document.createElement('div');
+                thumb.className = `lightbox-thumb ${i === 0 ? 'active' : ''}`;
+                thumb.innerHTML = `<img src="${img.src}" alt="${img.title}">`;
+                thumb.addEventListener('click', () => { currentIndex = i; updateImage(); });
+                thumbsContainer.appendChild(thumb);
+            });
+        }
+
+        document.querySelectorAll('.gallery-trigger').forEach(el => {
+            el.addEventListener('click', () => openLightbox(el.dataset.gallery));
         });
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxOverlay').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxPrev').addEventListener('click', () => {
+            if (!currentGallery) return;
+            currentIndex = (currentIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
+            updateImage();
+        });
+        document.getElementById('lightboxNext').addEventListener('click', () => {
+            if (!currentGallery) return;
+            currentIndex = (currentIndex + 1) % currentGallery.images.length;
+            updateImage();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + currentGallery.images.length) % currentGallery.images.length; updateImage(); }
+            if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % currentGallery.images.length; updateImage(); }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md', 'bg-surface/95');
+            } else {
+                nav.classList.remove('shadow-md', 'bg-surface/95');
+            }
+        });
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.remove('hidden');
+        });
+        document.getElementById('mobileMenuClose').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        document.getElementById('mobileMenuOverlay').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.add('hidden');
+        });
+        document.querySelectorAll('#mobileMenu a').forEach(a => {
+            a.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        
+        // Initialize Theme
+        const savedTheme = localStorage.getItem('theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        setTheme(savedTheme);
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
+            setTheme(currentTheme);
+        });
+
+        // Code Window Tabs and Terminal Logic
+        const tabs = {
+            profile: { button: document.getElementById('tab-profile'), content: document.getElementById('content-profile') },
+            skills: { button: document.getElementById('tab-skills'), content: document.getElementById('content-skills') },
+            terminal: { button: document.getElementById('tab-terminal'), content: document.getElementById('content-terminal') }
+        };
+
+        function switchTab(activeKey) {
+            Object.keys(tabs).forEach(key => {
+                const tab = tabs[key];
+                if (key === activeKey) {
+                    tab.button.className = "px-3 py-1.5 rounded-t-lg text-[10px] md:text-xs font-label bg-[#0f172a] text-white border-t-2 border-primary transition-all flex items-center gap-1.5";
+                    tab.content.classList.remove('hidden');
+                    if (key === 'terminal') {
+                        setTimeout(() => document.getElementById('terminal-input').focus(), 50);
+                    }
+                } else {
+                    tab.button.className = "px-3 py-1.5 rounded-t-lg text-[10px] md:text-xs font-label text-gray-400 hover:bg-[#0f172a]/40 hover:text-gray-200 transition-all flex items-center gap-1.5";
+                    tab.content.classList.add('hidden');
+                }
+            });
+        }
+
+        Object.keys(tabs).forEach(key => {
+            tabs[key].button.addEventListener('click', () => switchTab(key));
+        });
+
+        // Terminal functionality
+        const termInput = document.getElementById('terminal-input');
+        const termHistory = document.getElementById('terminal-history');
+        const initialHistory = termHistory.innerHTML;
+
+        function addLineToTerminal(text, colorClass = 'text-gray-300') {
+            const line = document.createElement('div');
+            line.className = colorClass;
+            line.innerHTML = text;
+            termHistory.appendChild(line);
+            termHistory.scrollTop = termHistory.scrollHeight;
+        }
+
+        termInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = termInput.value.trim().toLowerCase();
+                termInput.value = '';
+                
+                if (!cmd) return;
+
+                // Add prompt line
+                addLineToTerminal(`&gt; ${cmd}`, 'text-[#60a5fa] font-bold mt-1');
+
+                switch (cmd) {
+                    case 'help':
+                    case 'ayuda':
+                        addLineToTerminal('Comandos disponibles:<br>' +
+                                          '  - <span class="text-yellow-400">about</span>: Sobre MathewDev<br>' +
+                                          '  - <span class="text-yellow-400">skills</span>: Mis tecnologías<br>' +
+                                          '  - <span class="text-yellow-400">contact</span>: Datos de contacto<br>' +
+                                          '  - <span class="text-yellow-400">clear</span>: Limpiar pantalla');
+                        break;
+                    case 'about':
+                    case 'sobre-mi':
+                        addLineToTerminal('Mathew Tenorio - Desarrollador Full Stack.<br>Estudiante de Ingeniería de Sistemas con pasión por el código limpio y soluciones robustas. Creando apps web modernas.');
+                        break;
+                    case 'skills':
+                    case 'habilidades':
+                        addLineToTerminal('Mi Stack Tecnológico:<br>' +
+                                          '  - Frontend: JavaScript, React, HTML5, CSS3, Tailwind CSS<br>' +
+                                          '  - Backend: Java, Node.js, PHP, SQL Server, MySQL<br>' +
+                                          '  - Herramientas: Git, GitHub, VS Code');
+                        break;
+                    case 'contact':
+                    case 'contacto':
+                        addLineToTerminal('Mis datos de contacto:<br>' +
+                                          '  - WhatsApp: +51 952 296 651<br>' +
+                                          '  - Email: mathewteno25@hotmail.com<br>' +
+                                          '  - GitHub: github.com/matmat251');
+                        break;
+                    case 'clear':
+                    case 'limpiar':
+                        termHistory.innerHTML = initialHistory;
+                        break;
+                    default:
+                        addLineToTerminal(`Comando "${cmd}" no reconocido. Escribe "help" para ver comandos.`, 'text-[#ff5f56]');
+                }
+            }
+        });
+
+        // Scrollspy Logic
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav div.hidden a');
+        const mobileLinks = document.querySelectorAll('#mobileMenu a');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.25
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    
+                    // Desktop active link
+                    navLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href === `#${id}`) {
+                            link.classList.add('text-primary', 'font-semibold');
+                            link.classList.remove('text-on-surface-variant');
+                        } else {
+                            link.classList.remove('text-primary', 'font-semibold');
+                            link.classList.add('text-on-surface-variant');
+                        }
+                    });
+
+                    // Mobile active link
+                    mobileLinks.forEach(link => {
+                        const href = link.getAttribute('href');
+                        if (href === `#${id}`) {
+                            link.classList.add('text-primary');
+                            link.classList.remove('text-on-surface');
+                        } else {
+                            link.classList.remove('text-primary');
+                            link.classList.add('text-on-surface');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Scroll Reveal Logic
+        const revealElements = document.querySelectorAll('.reveal-element');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.05 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Skills progress bar animation
+        const progressBars = document.querySelectorAll('.skill-progress-bar');
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bar = entry.target;
+                    const progress = bar.dataset.progress;
+                    bar.style.transition = 'width 1.5s cubic-bezier(0.16, 1, 0.3, 1)';
+                    bar.style.width = progress;
+                    progressObserver.unobserve(bar);
+                }
+            });
+        }, { threshold: 0.05 });
+
+        progressBars.forEach(bar => progressObserver.observe(bar));
+
+        console.log('🚀 Portafolio de Mathew Tenorio cargado correctamente');
     </script>
 </body>
-
 </html>
